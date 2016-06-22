@@ -14,6 +14,14 @@ $cities = {
 }
 $cities.default = 0
 
+$states2 = {
+  OR: ['Oregon', ['aaaa', 'bbbb']],
+  FL: ['Florida', ['ccccc']],
+  CA: ['California', ['ffff','gggggg','hhhhhh']],
+  NY: 'New York',
+  MI: 'Michigan'
+}
+
 $taxes = {
   OR: 7.5,
   FL: 10,
@@ -46,10 +54,13 @@ p describe_state ('FL')
 p describe_state ('NY')
 
 def calculate_tax(code, dollor)
+  return "no key! " unless $taxes.has_key?(code.to_sym)
   $taxes[code.to_sym] * dollor.to_f
 end
 
 p calculate_tax('OR', 900)
+p calculate_tax(:OR, 900)
+p calculate_tax('FF', 900)
 
 def find_state_for_city(city)
   ans = $cities.select { |k, v| v.include?(city)}.keys.join()
