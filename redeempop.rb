@@ -1,3 +1,4 @@
+require 'pry'
 # recursive method
 def pop_get (cash)
   pop_cash = cash / 2
@@ -10,7 +11,7 @@ def pop_get (cash)
     redeem_cap: 0
   }
 
-  p "bottle1 = " << pop[:bottle]
+  #p "bottle1 = " << pop[:bottle]
   redeem (pop)
 end
 
@@ -34,6 +35,7 @@ end
 
 
 while true
+ # binding.pry
   puts "How much money ?"
   dollar = gets.strip
 
